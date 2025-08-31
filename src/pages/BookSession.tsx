@@ -9,7 +9,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SearchModal from '@/components/SearchModal';
 import WhatsAppButton from '@/components/WhatsAppButton';
-import bookingLocationImage from '@/assets/booking-location.jpg';
+import indianWeddingImage from '@/assets/indian-wedding-booking.jpg';
 
 const BookSession = () => {
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
@@ -63,8 +63,8 @@ const BookSession = () => {
             {/* Contact Image */}
             <div className="relative">
               <img
-                src={bookingLocationImage}
-                alt="Beautiful photography location"
+                src={indianWeddingImage}
+                alt="Indian wedding photography"
                 className="w-full h-96 lg:h-full object-cover rounded-lg shadow-warm-lg"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-lg"></div>
