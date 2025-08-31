@@ -6,6 +6,7 @@ import AboutSection from '@/components/AboutSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import SearchModal from '@/components/SearchModal';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 const Index = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -23,6 +24,8 @@ const Index = () => {
         isOpen={isSearchOpen} 
         onClose={() => setIsSearchOpen(false)} 
       />
+      
+      <WhatsAppButton />
     </div>
   );
 };
