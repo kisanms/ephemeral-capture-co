@@ -61,7 +61,32 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Brand colors for The Moment Maker Films
+				warm: {
+					primary: 'hsl(var(--warm-primary))',
+					secondary: 'hsl(var(--warm-secondary))',
+					accent: 'hsl(var(--warm-accent))',
+					light: 'hsl(var(--warm-light))'
 				}
+			},
+			fontFamily: {
+				serif: ['Playfair Display', 'serif'],
+				sans: ['Inter', 'sans-serif'],
+			},
+			backgroundImage: {
+				'hero-gradient': 'var(--gradient-hero)',
+				'overlay-gradient': 'var(--gradient-overlay)',
+			},
+			boxShadow: {
+				'warm': 'var(--shadow-soft)',
+				'warm-md': 'var(--shadow-medium)',
+				'warm-lg': 'var(--shadow-strong)',
+			},
+			transitionProperty: {
+				'smooth': 'var(--transition-smooth)',
+				'quick': 'var(--transition-quick)',
+				'bounce': 'var(--transition-bounce)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

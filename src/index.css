@@ -2,39 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* The Moment Maker Films - Premium Photography Portfolio Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Core Brand Colors - Warm, sophisticated photography tones */
+    --background: 30 15% 97%;
+    --foreground: 20 12% 15%;
+    
+    /* Surface colors */
+    --card: 30 15% 98%;
+    --card-foreground: 20 12% 15%;
+    
+    --popover: 30 15% 98%;
+    --popover-foreground: 20 12% 15%;
+    
+    /* Brand Identity - Warm earth tones */
+    --primary: 25 35% 45%;
+    --primary-foreground: 30 15% 98%;
+    
+    --secondary: 30 20% 88%;
+    --secondary-foreground: 20 12% 25%;
+    
+    /* Accent colors - Sophisticated muted tones */
+    --accent: 35 25% 75%;
+    --accent-foreground: 20 12% 25%;
+    
+    --muted: 30 15% 92%;
+    --muted-foreground: 25 8% 55%;
+    
+    /* Interaction states */
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 30 15% 98%;
+    
+    /* UI Elements */
+    --border: 30 15% 88%;
+    --input: 30 15% 90%;
+    --ring: 25 35% 45%;
+    
+    /* Premium design tokens */
+    --warm-primary: 25 35% 45%;
+    --warm-secondary: 35 25% 65%;
+    --warm-accent: 45 30% 75%;
+    --warm-light: 30 25% 95%;
+    
+    /* Gradients for hero sections */
+    --gradient-hero: linear-gradient(135deg, hsl(25 35% 45% / 0.9), hsl(35 25% 65% / 0.7));
+    --gradient-overlay: linear-gradient(180deg, hsl(20 12% 15% / 0.3), hsl(20 12% 15% / 0.7));
+    
+    /* Shadows for depth */
+    --shadow-soft: 0 4px 20px hsl(25 35% 45% / 0.15);
+    --shadow-medium: 0 8px 30px hsl(25 35% 45% / 0.2);
+    --shadow-strong: 0 15px 40px hsl(25 35% 45% / 0.3);
+    
+    /* Animation variables */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-quick: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --radius: 0.5rem;
 
@@ -94,12 +118,157 @@ All colors MUST be HSL.
   }
 }
 
+}
+
 @layer base {
   * {
     @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-serif;
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--warm-primary));
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--warm-secondary));
+  }
+}
+
+@layer components {
+  /* Hero section styles */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .hero-overlay {
+    background: var(--gradient-overlay);
+  }
+  
+  /* Animation classes */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .animate-slide-in-left {
+    animation: slideInLeft 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.6s ease-out forwards;
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  
+  /* Hover effects */
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-strong);
+  }
+  
+  .hover-scale {
+    transition: var(--transition-quick);
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Glass morphism effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Custom button variants */
+  .btn-hero {
+    @apply bg-transparent border-2 border-white text-white px-8 py-4 font-semibold tracking-wide;
+    @apply hover:bg-white hover:text-primary transition-all duration-300;
+    @apply shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-warm {
+    background: hsl(var(--warm-primary));
+    color: hsl(var(--primary-foreground));
+    @apply px-6 py-3 font-medium tracking-wide;
+    @apply hover:bg-opacity-90 transition-all duration-300;
+    @apply shadow-md hover:shadow-lg;
+  }
+}
+
+@layer utilities {
+  /* Text gradients */
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--warm-primary)), hsl(var(--warm-secondary)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Custom shadows */
+  .shadow-warm {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .shadow-warm-md {
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .shadow-warm-lg {
+    box-shadow: var(--shadow-strong);
+  }
+}
+
+/* Keyframe animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }

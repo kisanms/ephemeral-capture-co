@@ -1,12 +1,28 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React, { useState } from 'react';
+import Header from '@/components/Header';
+import HeroSection from '@/components/HeroSection';
+import PortfolioSection from '@/components/PortfolioSection';
+import AboutSection from '@/components/AboutSection';
+import ContactSection from '@/components/ContactSection';
+import Footer from '@/components/Footer';
+import SearchModal from '@/components/SearchModal';
 
 const Index = () => {
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <Header onSearchOpen={() => setIsSearchOpen(true)} />
+      <HeroSection />
+      <PortfolioSection />
+      <AboutSection />
+      <ContactSection />
+      <Footer />
+      
+      <SearchModal 
+        isOpen={isSearchOpen} 
+        onClose={() => setIsSearchOpen(false)} 
+      />
     </div>
   );
 };
