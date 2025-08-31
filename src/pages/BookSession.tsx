@@ -63,8 +63,8 @@ const BookSession = () => {
             {/* Contact Image */}
             <div className="relative">
               <img
-                src={indianWeddingImage}
-                alt="Indian wedding photography"
+                src="https://images.unsplash.com/photo-1556745757-8d76bdb6984b?w=800&h=600&fit=crop&crop=center"
+                alt="Photography consultation and booking"
                 className="w-full h-96 lg:h-full object-cover rounded-lg shadow-warm-lg"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-lg"></div>
