@@ -71,8 +71,8 @@ export default {
 				}
 			},
 			fontFamily: {
-				serif: ['Playfair Display', 'serif'],
-				sans: ['Inter', 'sans-serif'],
+				serif: ['Cormorant Garamond', 'serif'],
+				sans: ['Outfit', 'sans-serif'],
 			},
 			backgroundImage: {
 				'hero-gradient': 'var(--gradient-hero)',

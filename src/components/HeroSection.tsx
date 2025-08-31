@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 const HeroSection: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -9,19 +10,22 @@ const HeroSection: React.FC = () => {
     title: 'Capturing Memories',
     subtitle: 'Moments of Love',
     description: 'Every frame tells a story of love, joy, and timeless moments that last forever.',
-    cta: 'Book a Photo Shoot'
+    cta: 'Book a Photo Shoot',
+    link: '/book-session'
   }, {
     image: 'https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=1920&h=1080&fit=crop&crop=center',
     title: 'Your Perfect Day',
     subtitle: 'Wedding Photography',
     description: 'Professional wedding photography that captures the essence of your special day.',
-    cta: 'View Our Work'
+    cta: 'View Our Work',
+    link: '/portfolio'
   }, {
     image: 'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1920&h=1080&fit=crop&crop=center',
     title: 'Love Stories',
     subtitle: 'Engagement Sessions',
     description: 'Beautiful engagement photography that celebrates your unique love story.',
-    cta: 'Book Session'
+    cta: 'Book Session',
+    link: '/book-session'
   }];
   useEffect(() => {
     if (!isPlaying) return;
@@ -59,9 +63,11 @@ const HeroSection: React.FC = () => {
             {heroSlides[currentSlide].description}
           </p>
           <div className="animate-fade-in-up animation-delay-600">
-            <Button className="btn-hero text-lg px-8 py-4 hover-scale">
-              {heroSlides[currentSlide].cta}
-            </Button>
+            <Link to={heroSlides[currentSlide].link}>
+              <Button className="btn-hero text-lg px-8 py-4 hover-scale">
+                {heroSlides[currentSlide].cta}
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

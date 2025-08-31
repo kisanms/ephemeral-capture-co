@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 import ImageModal from '@/components/ImageModal';
 import WhatsAppButton from '@/components/WhatsAppButton';
 
@@ -180,9 +181,11 @@ const Portfolio = () => {
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
             Let's capture your special moments with the same passion and attention to detail.
           </p>
-          <Button className="bg-warm-primary hover:bg-warm-secondary text-white px-8 py-4 text-lg shadow-warm hover:shadow-warm-md">
-            Book a Session
-          </Button>
+          <Link to="/book-session">
+            <Button className="bg-warm-primary hover:bg-warm-secondary text-white px-8 py-4 text-lg shadow-warm hover:shadow-warm-md">
+              Book a Session
+            </Button>
+          </Link>
         </div>
       </section>
 

@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Camera, Heart, Star, Award } from 'lucide-react';
+import { Camera, Heart, Star, Users, Award, Clock } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import SearchModal from '@/components/SearchModal';
 import WhatsAppButton from '@/components/WhatsAppButton';
 
 const About = () => {
@@ -163,9 +167,11 @@ const About = () => {
                 Every love story is different, and we take the time to understand yours. From the initial consultation 
                 to the final delivery, we work closely with our clients to ensure their vision comes to life.
               </p>
-              <Button className="bg-warm-primary hover:bg-warm-secondary text-white px-8 py-4 text-lg shadow-warm hover:shadow-warm-md">
-                View Our Work
-              </Button>
+              <Link to="/portfolio">
+                <Button className="bg-warm-primary hover:bg-warm-secondary text-white px-8 py-4 text-lg shadow-warm hover:shadow-warm-md">
+                  View Our Work
+                </Button>
+              </Link>
             </div>
             <div className="relative">
               <img
