@@ -76,17 +76,31 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
 
     setIsSearching(true);
     
-    // Simulate search delay
+    // Debounced search with improved filtering
     const searchTimeout = setTimeout(() => {
-      const filteredResults = mockSearchData.filter(item =>
-        item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.description.toLowerCase().includes(searchQuery.toLowerCase())
-      );
+      const query = searchQuery.toLowerCase().trim();
+      const filteredResults = mockSearchData.filter(item => {
+        const titleMatch = item.title.toLowerCase().includes(query);
+        const categoryMatch = item.category.toLowerCase().includes(query);
+        const descriptionMatch = item.description.toLowerCase().includes(query);
+        
+        // Score matches for better relevance
+        let score = 0;
+        if (titleMatch) score += 3;
+        if (categoryMatch) score += 2;
+        if (descriptionMatch) score += 1;
+        
+        return score > 0;
+      }).sort((a, b) => {
+        // Sort by relevance
+        const aTitle = a.title.toLowerCase().includes(query) ? 3 : 0;
+        const bTitle = b.title.toLowerCase().includes(query) ? 3 : 0;
+        return bTitle - aTitle;
+      });
       
       setSearchResults(filteredResults);
       setIsSearching(false);
-    }, 300);
+    }, 150); // Reduced debounce time for more responsive feel
 
     return () => clearTimeout(searchTimeout);
   }, [searchQuery]);
