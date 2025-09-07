@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Eye, Heart, ArrowRight } from 'lucide-react';
-import ImageModal from './ImageModal';
+import { useNavigate } from 'react-router-dom';
 
 interface PortfolioItem {
   id: string;
@@ -12,14 +12,12 @@ interface PortfolioItem {
 }
 
 const PortfolioSection: React.FC = () => {
-  const [selectedPortfolio, setSelectedPortfolio] = useState<PortfolioItem | null>(null);
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   const portfolioData: PortfolioItem[] = [
     {
       id: '1',
-      title: 'Sarah & Michael',
+      title: 'Ganesh & Neha',
       category: 'Wedding',
       coverImage: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=600&fit=crop',
       images: [
@@ -101,14 +99,19 @@ const PortfolioSection: React.FC = () => {
   ];
 
   const handlePortfolioClick = (portfolio: PortfolioItem, imageIndex: number = 0) => {
-    setSelectedPortfolio(portfolio);
-    setSelectedImageIndex(imageIndex);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedPortfolio(null);
+    // Convert PortfolioItem to the format expected by PortfolioView
+    const portfolioData = {
+      id: portfolio.id,
+      title: portfolio.title,
+      category: portfolio.category,
+      images: portfolio.images,
+      description: portfolio.description
+    };
+    
+    // Navigate to portfolio view page with data
+    navigate(`/portfolio/${portfolio.id}`, {
+      state: { portfolio: portfolioData, initialImageIndex: imageIndex }
+    });
   };
 
   return (
@@ -205,14 +208,6 @@ const PortfolioSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Image Modal */}
-      {isModalOpen && selectedPortfolio && (
-        <ImageModal
-          portfolio={selectedPortfolio}
-          initialImageIndex={selectedImageIndex}
-          onClose={closeModal}
-        />
-      )}
     </section>
   );
 };

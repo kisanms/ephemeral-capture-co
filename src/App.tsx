@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useScrollToTop } from "./hooks/useScrollToTop";
 import Index from "./pages/Index";
 import Portfolio from "./pages/Portfolio";
+import PortfolioView from "./pages/PortfolioView";
 import About from "./pages/About";
 import Investment from "./pages/Investment";
 import Blog from "./pages/Blog";
@@ -21,6 +22,7 @@ const AppRoutes = () => {
     <Routes>
       <Route path="/" element={<Index />} />
       <Route path="/portfolio" element={<Portfolio />} />
+      <Route path="/portfolio/:id" element={<PortfolioView />} />
       <Route path="/about" element={<About />} />
       <Route path="/investment" element={<Investment />} />
       <Route path="/blog" element={<Blog />} />

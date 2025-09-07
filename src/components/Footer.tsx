@@ -62,7 +62,8 @@ const Footer: React.FC = () => {
                 <span>+1 (804) 555-0123</span>
               </div>
               <div className="flex items-center space-x-3">
-                <MapPin className="w-4 h-4 text-warm-primary" />
+                <MapPin className="w-4 h-4 text-warm-primary"
+                 />
                 <span>Richmond, Virginia</span>
               </div>
             </div>
@@ -109,14 +110,14 @@ const Footer: React.FC = () => {
           {/* Newsletter & Social */}
           <div>
             <h3 className="text-lg font-serif font-semibold mb-6">
-              Stay Connected
+              Socials
             </h3>
             
-            <p className="text-background/80 text-sm mb-4">
+            {/* <p className="text-background/80 text-sm mb-4">
               Subscribe to our newsletter for photography tips, behind-the-scenes content, and special offers.
-            </p>
+            </p> */}
             
-            <div className="flex space-x-2 mb-6">
+            {/* <div className="flex space-x-2 mb-6">
               <input
                 type="email"
                 placeholder="Your email address"
@@ -126,7 +127,7 @@ const Footer: React.FC = () => {
                 Subscribe
               </button>
             </div>
-            
+             */}
             <div className="flex space-x-4">
               {socialLinks.map((social) => (
                 <a
@@ -168,7 +169,7 @@ const Footer: React.FC = () => {
             <div className="flex items-center space-x-2 text-background/80 text-sm">
               <span>Made with</span>
               <Heart className="w-4 h-4 text-warm-primary" />
-              <span>in Richmond, VA</span>
+              <span>in Surat, GJ</span>
             </div>
           </div>
         </div>

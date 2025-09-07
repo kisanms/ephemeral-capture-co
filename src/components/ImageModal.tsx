@@ -1,6 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { X, ChevronLeft, ChevronRight, Play, Pause, Download, Share2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import React, { useState, useEffect } from "react";
+import {
+  X,
+  ChevronLeft,
+  ChevronRight,
+  Play,
+  Pause,
+  Download,
+  Share2,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface Portfolio {
   id: string;
@@ -16,7 +24,11 @@ interface ImageModalProps {
   onClose: () => void;
 }
 
-const ImageModal: React.FC<ImageModalProps> = ({ portfolio, initialImageIndex, onClose }) => {
+const ImageModal: React.FC<ImageModalProps> = ({
+  portfolio,
+  initialImageIndex,
+  onClose,
+}) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(initialImageIndex);
   const [isSlideshow, setIsSlideshow] = useState(false);
   const [showControls, setShowControls] = useState(true);
@@ -34,28 +46,28 @@ const ImageModal: React.FC<ImageModalProps> = ({ portfolio, initialImageIndex, o
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       switch (e.key) {
-        case 'Escape':
+        case "Escape":
           onClose();
           break;
-        case 'ArrowLeft':
+        case "ArrowLeft":
           previousImage();
           break;
-        case 'ArrowRight':
+        case "ArrowRight":
           nextImage();
           break;
-        case ' ':
+        case " ":
           e.preventDefault();
           toggleSlideshow();
           break;
       }
     };
 
-    document.addEventListener('keydown', handleKeyDown);
-    document.body.style.overflow = 'hidden';
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'unset';
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "unset";
     };
   }, []);
 
@@ -64,7 +76,9 @@ const ImageModal: React.FC<ImageModalProps> = ({ portfolio, initialImageIndex, o
   };
 
   const previousImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + portfolio.images.length) % portfolio.images.length);
+    setCurrentImageIndex(
+      (prev) => (prev - 1 + portfolio.images.length) % portfolio.images.length
+    );
   };
 
   const toggleSlideshow = () => {
@@ -80,17 +94,20 @@ const ImageModal: React.FC<ImageModalProps> = ({ portfolio, initialImageIndex, o
       {/* Header */}
       <div
         className={`absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/50 to-transparent p-6 transition-opacity duration-300 ${
-          showControls ? 'opacity-100' : 'opacity-0'
+          showControls ? "opacity-100" : "opacity-0"
         }`}
       >
         <div className="flex items-center justify-between text-white">
           <div>
-            <h2 className="text-2xl font-serif font-medium">{portfolio.title}</h2>
+            <h2 className="text-2xl font-serif font-medium">
+              {portfolio.title}
+            </h2>
             <p className="text-sm opacity-75 mt-1">
-              {currentImageIndex + 1} of {portfolio.images.length} • {portfolio.category}
+              {currentImageIndex + 1} of {portfolio.images.length} •{" "}
+              {portfolio.category}
             </p>
           </div>
-          
+
           <div className="flex items-center space-x-4">
             <Button
               variant="ghost"
@@ -104,8 +121,8 @@ const ImageModal: React.FC<ImageModalProps> = ({ portfolio, initialImageIndex, o
                 <Play className="w-5 h-5" />
               )}
             </Button>
-            
-            <Button
+
+             <Button
               variant="ghost"
               size="icon"
               className="text-white hover:bg-white/20"
@@ -119,8 +136,8 @@ const ImageModal: React.FC<ImageModalProps> = ({ portfolio, initialImageIndex, o
               className="text-white hover:bg-white/20"
             >
               <Download className="w-5 h-5" />
-            </Button>
-            
+            </Button> 
+
             <Button
               variant="ghost"
               size="icon"
@@ -146,7 +163,7 @@ const ImageModal: React.FC<ImageModalProps> = ({ portfolio, initialImageIndex, o
       {/* Navigation Arrows */}
       <div
         className={`absolute left-6 top-1/2 transform -translate-y-1/2 transition-opacity duration-300 ${
-          showControls ? 'opacity-100' : 'opacity-0'
+          showControls ? "opacity-100" : "opacity-0"
         }`}
       >
         <Button
@@ -162,7 +179,7 @@ const ImageModal: React.FC<ImageModalProps> = ({ portfolio, initialImageIndex, o
 
       <div
         className={`absolute right-6 top-1/2 transform -translate-y-1/2 transition-opacity duration-300 ${
-          showControls ? 'opacity-100' : 'opacity-0'
+          showControls ? "opacity-100" : "opacity-0"
         }`}
       >
         <Button
@@ -179,7 +196,7 @@ const ImageModal: React.FC<ImageModalProps> = ({ portfolio, initialImageIndex, o
       {/* Bottom Controls */}
       <div
         className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-6 transition-opacity duration-300 ${
-          showControls ? 'opacity-100' : 'opacity-0'
+          showControls ? "opacity-100" : "opacity-0"
         }`}
       >
         {/* Thumbnail Strip */}
@@ -191,8 +208,8 @@ const ImageModal: React.FC<ImageModalProps> = ({ portfolio, initialImageIndex, o
                 onClick={() => setCurrentImageIndex(index)}
                 className={`flex-shrink-0 w-16 h-12 rounded overflow-hidden border-2 transition-all duration-300 ${
                   index === currentImageIndex
-                    ? 'border-white scale-110'
-                    : 'border-white/30 hover:border-white/60'
+                    ? "border-white scale-110"
+                    : "border-white/30 hover:border-white/60"
                 }`}
               >
                 <img
@@ -211,7 +228,9 @@ const ImageModal: React.FC<ImageModalProps> = ({ portfolio, initialImageIndex, o
             <div
               className="bg-white h-1 rounded-full transition-all duration-300"
               style={{
-                width: `${((currentImageIndex + 1) / portfolio.images.length) * 100}%`,
+                width: `${
+                  ((currentImageIndex + 1) / portfolio.images.length) * 100
+                }%`,
               }}
             />
           </div>
@@ -219,7 +238,10 @@ const ImageModal: React.FC<ImageModalProps> = ({ portfolio, initialImageIndex, o
 
         {/* Instructions */}
         <div className="text-center text-white/75 text-sm">
-          <p>Use arrow keys to navigate • Press space to start slideshow • ESC to close</p>
+          <p>
+            Use arrow keys to navigate • Press space to start slideshow • ESC to
+            close
+          </p>
         </div>
       </div>
     </div>
