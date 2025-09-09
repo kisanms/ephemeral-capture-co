@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Search, Instagram } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Menu, X, Search, Instagram } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 interface HeaderProps {
   onSearchOpen: () => void;
@@ -16,36 +16,38 @@ const Header: React.FC<HeaderProps> = ({ onSearchOpen }) => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '/' },
-    { name: 'Portfolio', href: '/portfolio' },
-    { name: 'About', href: '/about' },
-    { name: 'Investment', href: '/investment' },
-    { name: 'Blog', href: '/blog' },
+    { name: "Home", href: "/" },
+    { name: "Portfolio", href: "/portfolio" },
+    { name: "About", href: "/about" },
+    { name: "Investment", href: "/investment" },
+    { name: "Blog", href: "/blog" },
   ];
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-background/95 backdrop-blur-md shadow-warm border-b border-border'
-          : 'bg-black/30 backdrop-blur-sm'
+          ? "bg-background/95 backdrop-blur-md shadow-warm border-b border-border"
+          : "bg-black/30 backdrop-blur-sm"
       }`}
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <span className={`text-2xl font-serif font-bold transition-colors duration-300 ${
-              isScrolled 
-                ? 'text-foreground group-hover:text-warm-primary' 
-                : 'text-white group-hover:text-warm-accent'
-            }`}>
-              The Moment Maker
+            <span
+              className={`text-2xl font-serif font-bold transition-colors duration-300 ${
+                isScrolled
+                  ? "text-foreground group-hover:text-warm-primary"
+                  : "text-white group-hover:text-warm-accent"
+              }`}
+            >
+              The Moment Maker Films
             </span>
           </Link>
 
@@ -56,15 +58,17 @@ const Header: React.FC<HeaderProps> = ({ onSearchOpen }) => {
                 key={item.name}
                 to={item.href}
                 className={`relative transition-colors duration-300 font-medium group ${
-                  isScrolled 
-                    ? 'text-foreground hover:text-warm-primary' 
-                    : 'text-white hover:text-warm-accent'
+                  isScrolled
+                    ? "text-foreground hover:text-warm-primary"
+                    : "text-white hover:text-warm-accent"
                 }`}
               >
                 {item.name}
-                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 ${
-                  isScrolled ? 'bg-warm-primary' : 'bg-warm-accent'
-                }`}></span>
+                <span
+                  className={`absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 ${
+                    isScrolled ? "bg-warm-primary" : "bg-warm-accent"
+                  }`}
+                ></span>
               </Link>
             ))}
           </nav>
@@ -76,22 +80,22 @@ const Header: React.FC<HeaderProps> = ({ onSearchOpen }) => {
               size="icon"
               onClick={onSearchOpen}
               className={`transition-colors duration-300 ${
-                isScrolled 
-                  ? 'hover:bg-warm-light hover:text-warm-primary' 
-                  : 'text-white hover:bg-white/20 hover:text-warm-accent'
+                isScrolled
+                  ? "hover:bg-warm-light hover:text-warm-primary"
+                  : "text-white hover:bg-white/20 hover:text-warm-accent"
               }`}
             >
               <Search className="w-5 h-5" />
             </Button>
-            
+
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/sc_pixex/"
               target="_blank"
               rel="noopener noreferrer"
               className={`p-2 rounded-full transition-colors duration-300 ${
-                isScrolled 
-                  ? 'hover:bg-warm-light hover:text-warm-primary' 
-                  : 'text-white hover:bg-white/20 hover:text-warm-accent'
+                isScrolled
+                  ? "hover:bg-warm-light hover:text-warm-primary"
+                  : "text-white hover:bg-white/20 hover:text-warm-accent"
               }`}
             >
               <Instagram className="w-5 h-5" />
@@ -111,9 +115,7 @@ const Header: React.FC<HeaderProps> = ({ onSearchOpen }) => {
               variant="ghost"
               size="icon"
               className={`lg:hidden ${
-                isScrolled 
-                  ? 'text-foreground' 
-                  : 'text-white'
+                isScrolled ? "text-foreground" : "text-white"
               }`}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
