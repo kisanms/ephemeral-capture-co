@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Check, Heart, Star, Camera } from 'lucide-react';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import Header from '@/components/Header';
+import SearchModal from '@/components/SearchModal';
 
 const Investment = () => {
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const packages = [
     {
       name: 'Engagement Session',
@@ -93,6 +96,7 @@ const Investment = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Header onSearchOpen={() => setIsSearchModalOpen(true)} />
       {/* Hero Section */}
       <section className="relative py-32 bg-gradient-to-br from-warm-light to-background">
         <div className="container mx-auto px-6 text-center">
@@ -100,7 +104,7 @@ const Investment = () => {
             Investment
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Transparent pricing for exceptional photography services. We believe in providing 
+            Transparent pricing for exceptional photography services. We believe in providing
             clear value for your investment in preserving life's most precious moments.
           </p>
         </div>
@@ -114,7 +118,7 @@ const Investment = () => {
               Photography Packages
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Choose the package that best fits your needs. All packages include professional editing 
+              Choose the package that best fits your needs. All packages include professional editing
               and high-resolution digital images.
             </p>
           </div>
@@ -123,11 +127,10 @@ const Investment = () => {
             {packages.map((pkg, index) => (
               <div
                 key={index}
-                className={`relative rounded-lg shadow-warm-lg p-8 ${
-                  pkg.popular 
-                    ? 'border-2 border-warm-primary bg-white scale-105' 
-                    : 'bg-white hover:shadow-warm-md transition-shadow duration-300'
-                }`}
+                className={`relative rounded-lg shadow-warm-lg p-8 ${pkg.popular
+                  ? 'border-2 border-warm-primary bg-white scale-105'
+                  : 'bg-white hover:shadow-warm-md transition-shadow duration-300'
+                  }`}
               >
                 {pkg.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
@@ -157,12 +160,11 @@ const Investment = () => {
                   ))}
                 </ul>
 
-                <Button 
-                  className={`w-full py-3 ${
-                    pkg.popular
-                      ? 'bg-warm-primary hover:bg-warm-secondary text-white'
-                      : 'border border-warm-primary text-warm-primary hover:bg-warm-light'
-                  }`}
+                <Button
+                  className={`w-full py-3 ${pkg.popular
+                    ? 'bg-warm-primary hover:bg-warm-secondary text-white'
+                    : 'border border-warm-primary text-warm-primary hover:bg-warm-light'
+                    }`}
                   variant={pkg.popular ? "default" : "outline"}
                 >
                   Choose Package
@@ -320,7 +322,7 @@ const Investment = () => {
           </div>
         </div>
       </section>
-      
+      <SearchModal isOpen={isSearchModalOpen} onClose={() => setIsSearchModalOpen(false)} />
       <WhatsAppButton />
     </div>
   );

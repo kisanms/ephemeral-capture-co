@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Calendar, User, Clock, ArrowRight } from 'lucide-react';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import Header from '@/components/Header';
+import SearchModal from '@/components/SearchModal';
 
 interface BlogPost {
   id: number;
@@ -18,7 +20,7 @@ interface BlogPost {
 
 const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
-
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const categories = ['All', 'Wedding Tips', 'Photography Guides', 'Real Weddings', 'Behind the Scenes'];
 
   const blogPosts: BlogPost[] = [
@@ -96,8 +98,8 @@ const Blog = () => {
     }
   ];
 
-  const filteredPosts = selectedCategory === 'All' 
-    ? blogPosts 
+  const filteredPosts = selectedCategory === 'All'
+    ? blogPosts
     : blogPosts.filter(post => post.category === selectedCategory);
 
   const featuredPost = blogPosts.find(post => post.featured);
@@ -113,6 +115,7 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Header onSearchOpen={() => setIsSearchModalOpen(true)} />
       {/* Hero Section */}
       <section className="relative py-32 bg-gradient-to-br from-warm-light to-background">
         <div className="container mx-auto px-6 text-center">
@@ -120,7 +123,7 @@ const Blog = () => {
             Our Blog
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Photography tips, real wedding stories, and behind-the-scenes insights 
+            Photography tips, real wedding stories, and behind-the-scenes insights
             from our team of professional photographers.
           </p>
         </div>
@@ -186,11 +189,10 @@ const Blog = () => {
                 key={category}
                 variant={selectedCategory === category ? "default" : "outline"}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-3 ${
-                  selectedCategory === category
-                    ? 'bg-warm-primary hover:bg-warm-secondary text-white'
-                    : 'border-warm-primary text-warm-primary hover:bg-warm-light'
-                }`}
+                className={`px-6 py-3 ${selectedCategory === category
+                  ? 'bg-warm-primary hover:bg-warm-secondary text-white'
+                  : 'border-warm-primary text-warm-primary hover:bg-warm-light'
+                  }`}
               >
                 {category}
               </Button>
@@ -211,7 +213,7 @@ const Blog = () => {
                     {post.category}
                   </div>
                 </div>
-                
+
                 <div className="space-y-4">
                   <div className="flex items-center gap-4 text-sm text-muted-foreground">
                     <div className="flex items-center gap-1">
@@ -223,15 +225,15 @@ const Blog = () => {
                       <span>{post.readTime}</span>
                     </div>
                   </div>
-                  
+
                   <h3 className="text-xl font-serif font-semibold text-foreground group-hover:text-warm-primary transition-colors duration-300">
                     {post.title}
                   </h3>
-                  
+
                   <p className="text-muted-foreground leading-relaxed">
                     {post.excerpt}
                   </p>
-                  
+
                   <div className="flex items-center justify-between pt-4">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <User className="w-4 h-4" />
@@ -257,7 +259,7 @@ const Blog = () => {
               Stay Updated
             </h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Subscribe to our newsletter for the latest photography tips, wedding inspiration, 
+              Subscribe to our newsletter for the latest photography tips, wedding inspiration,
               and exclusive content from our team.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
@@ -281,7 +283,7 @@ const Blog = () => {
             Ready to Create Your Story?
           </h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Let's discuss how we can capture your special moments with the same passion 
+            Let's discuss how we can capture your special moments with the same passion
             and attention to detail you see in our work.
           </p>
           <Button className="bg-warm-primary hover:bg-warm-secondary text-white px-8 py-4 text-lg shadow-warm hover:shadow-warm-md">
@@ -289,7 +291,8 @@ const Blog = () => {
           </Button>
         </div>
       </section>
-      
+
+      <SearchModal isOpen={isSearchModalOpen} onClose={() => setIsSearchModalOpen(false)} />
       <WhatsAppButton />
     </div>
   );

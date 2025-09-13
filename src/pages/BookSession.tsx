@@ -10,9 +10,9 @@ import GoogleMap from '@/components/GoogleMap';
 
 const BookSession = () => {
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
-  
+
   const phoneNumber = '+1234567890'; // Replace with actual phone number
-  
+
   const getWhatsAppUrl = (message: string) => {
     return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
   };
@@ -29,7 +29,7 @@ const BookSession = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header onSearchOpen={() => setIsSearchModalOpen(true)} />
-      
+
       {/* Hero Section */}
       <ScrollReveal>
         <section className="relative pt-32 pb-20 bg-gradient-to-br from-warm-light to-background">
@@ -205,10 +205,10 @@ const BookSession = () => {
                 Located in Richmond, Virginia. Available for sessions throughout the region.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
               <GoogleMap />
-              
+
               <div className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="text-center p-6 bg-background rounded-lg shadow-warm border border-border">
@@ -217,7 +217,7 @@ const BookSession = () => {
                     </div>
                     <h3 className="text-lg font-serif font-semibold text-foreground mb-2">Location</h3>
                     <p className="text-muted-foreground text-sm">
-                      Richmond, Virginia<br />
+                      Akshardeep Bunglow, Madhuram Circle Dindoli, Pl 80, near by Lake City, near Madhuram Circle, Surat, Gujarat<br />
                       Available by appointment
                     </p>
                   </div>
@@ -227,7 +227,7 @@ const BookSession = () => {
                       <MessageCircle className="w-6 h-6 text-white" />
                     </div>
                     <h3 className="text-lg font-serif font-semibold text-foreground mb-2">WhatsApp</h3>
-                    <a 
+                    <a
                       href={getWhatsAppUrl('Hi! I found your website and I\'m interested in your photography services.')}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -243,7 +243,7 @@ const BookSession = () => {
                     Prefer WhatsApp for Fast Response
                   </h4>
                   <p className="text-sm opacity-90 mb-4">
-                    We're most active on WhatsApp and can respond to your inquiries much faster than email. 
+                    We're most active on WhatsApp and can respond to your inquiries much faster than email.
                     You can also easily share inspiration photos and discuss your vision with us.
                   </p>
                   <div className="flex flex-wrap gap-3">

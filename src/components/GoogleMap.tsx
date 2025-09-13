@@ -23,7 +23,7 @@ const GoogleMap: React.FC<GoogleMapProps> = ({ className = "" }) => {
       ></iframe>
 
       {/* Overlay with company info */}
-      <div className="absolute top-4 left-4 bg-background/95 backdrop-blur-sm p-4 rounded-lg shadow-warm border border-border max-w-xs">
+      {/* <div className="absolute top-4 right-4 bg-background/95 backdrop-blur-sm p-4 rounded-lg shadow-warm border border-border max-w-xs">
         <h4 className="font-serif font-semibold text-foreground mb-2">
           The Moment Maker Films
         </h4>
@@ -33,7 +33,7 @@ const GoogleMap: React.FC<GoogleMapProps> = ({ className = "" }) => {
         <p className="text-xs text-muted-foreground">
           Available by appointment
         </p>
-      </div>
+      </div> */}
     </div>
   );
 };

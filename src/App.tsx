@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Portfolio from "./pages/Portfolio";
 import PortfolioView from "./pages/PortfolioView";
 import About from "./pages/About";
+import TeamMember from "./pages/TeamMember";
 import Investment from "./pages/Investment";
 import Blog from "./pages/Blog";
 import BookSession from "./pages/BookSession";
@@ -17,13 +18,14 @@ const queryClient = new QueryClient();
 
 const AppRoutes = () => {
   useScrollToTop();
-  
+
   return (
     <Routes>
       <Route path="/" element={<Index />} />
       <Route path="/portfolio" element={<Portfolio />} />
       <Route path="/portfolio/:id" element={<PortfolioView />} />
       <Route path="/about" element={<About />} />
+      <Route path="/team-member/:id" element={<TeamMember />} />
       <Route path="/investment" element={<Investment />} />
       <Route path="/blog" element={<Blog />} />
       <Route path="/book-session" element={<BookSession />} />

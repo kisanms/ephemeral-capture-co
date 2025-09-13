@@ -14,7 +14,8 @@ const About = () => {
     {
       name: 'Elena Rodriguez',
       role: 'Lead Photographer',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616c906ca6c?w=400&h=400&fit=crop',
+      image: 'https://images.unsplash.com/photo-1592621385612-4d7129426394?w=400&h=400&fit=crop',
+
       bio: 'With over 10 years of experience, Elena specializes in capturing the raw emotions and intimate moments that make each wedding unique.'
     },
     {
@@ -41,7 +42,7 @@ const About = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header onSearchOpen={() => setIsSearchModalOpen(true)} />
-      
+
       {/* Hero Section */}
       <ScrollReveal showSkeleton skeletonHeight="h-screen">
         <section className="relative py-32 bg-gradient-to-br from-warm-light to-background">
@@ -52,7 +53,7 @@ const About = () => {
                   About Us
                 </h1>
                 <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                  We are passionate storytellers who believe that every moment has the power to become a treasured memory. 
+                  We are passionate storytellers who believe that every moment has the power to become a treasured memory.
                   Our mission is to capture the authentic emotions and genuine connections that make your story unique.
                 </p>
                 <Button className="bg-warm-primary hover:bg-warm-secondary text-white px-8 py-4 text-lg shadow-warm hover:shadow-warm-md">
@@ -80,13 +81,13 @@ const About = () => {
                 Our Story
               </h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Founded in 2014, The Moment Maker Films began as a dream to preserve life's most precious moments. 
-                What started as a small studio has grown into a team of dedicated artists who share a passion for 
+                Founded in 2014, The Moment Maker Films began as a dream to preserve life's most precious moments.
+                What started as a small studio has grown into a team of dedicated artists who share a passion for
                 storytelling through the lens.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                We believe that photography is more than just capturing images – it's about freezing emotions, 
-                preserving memories, and creating art that will be cherished for generations. Every couple, every family, 
+                We believe that photography is more than just capturing images – it's about freezing emotions,
+                preserving memories, and creating art that will be cherished for generations. Every couple, every family,
                 and every individual has a unique story, and we're here to help tell it.
               </p>
             </div>
@@ -134,7 +135,7 @@ const About = () => {
                 Meet Our Team
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Our talented team of photographers and coordinators work together to ensure 
+                Our talented team of photographers and coordinators work together to ensure
                 your experience is nothing short of exceptional.
               </p>
             </div>
@@ -177,11 +178,11 @@ const About = () => {
                   Our Philosophy
                 </h2>
                 <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                  We believe that the best photographs happen when people feel comfortable and natural. 
+                  We believe that the best photographs happen when people feel comfortable and natural.
                   Our approach is relaxed, fun, and focused on capturing genuine moments rather than posed perfection.
                 </p>
                 <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                  Every love story is different, and we take the time to understand yours. From the initial consultation 
+                  Every love story is different, and we take the time to understand yours. From the initial consultation
                   to the final delivery, we work closely with our clients to ensure their vision comes to life.
                 </p>
                 <Link to="/portfolio">
@@ -218,7 +219,7 @@ const About = () => {
           </div>
         </section>
       </ScrollReveal>
-      
+
       <Footer />
       <SearchModal isOpen={isSearchModalOpen} onClose={() => setIsSearchModalOpen(false)} />
       <WhatsAppButton />

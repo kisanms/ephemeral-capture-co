@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { MapPin, Camera, Heart, Award, Users, Coffee, X } from 'lucide-react';
+import React from 'react';
+import { MapPin, Camera, Heart, Award, Users, Coffee } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { useNavigate } from 'react-router-dom';
 
 interface TeamMember {
   id: string;
@@ -15,7 +16,7 @@ interface TeamMember {
 }
 
 const AboutSection: React.FC = () => {
-  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+  const navigate = useNavigate();
 
   const teamMembers: TeamMember[] = [
     {
@@ -32,7 +33,7 @@ const AboutSection: React.FC = () => {
       id: '2',
       name: 'Sarah Martinez',
       role: 'Co-Photographer & Creative Director',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b367?w=400&h=400&fit=crop&crop=face',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop',
       bio: 'Sarah brings a unique artistic vision to every shoot, specializing in candid moments and natural lighting. Her background in fine arts adds a creative edge to every photograph.',
       experience: '6+ years in photography and visual arts',
       specialties: ['Engagement Sessions', 'Fine Art Photography', 'Creative Lighting'],
@@ -69,7 +70,7 @@ const AboutSection: React.FC = () => {
             Meet The Moment Makers
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            We are passionate storytellers dedicated to capturing the authentic emotions, 
+            We are passionate storytellers dedicated to capturing the authentic emotions,
             candid moments, and timeless memories that make your love story unique.
           </p>
         </div>
@@ -81,22 +82,22 @@ const AboutSection: React.FC = () => {
               Our Philosophy
             </h3>
             <p className="text-muted-foreground leading-relaxed">
-              At The Moment Maker Films, we believe that every love story deserves to be told 
-              beautifully. Our approach is rooted in authenticity – we don't just take photos, 
+              At The Moment Maker Films, we believe that every love story deserves to be told
+              beautifully. Our approach is rooted in authenticity – we don't just take photos,
               we capture the real, unguarded moments that happen between the planned poses.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              From intimate elopements to grand celebrations, we work closely with each couple 
-              to understand their vision and bring it to life through our lens. Our goal is to 
-              create a relaxed, enjoyable experience that results in stunning imagery you'll 
+              From intimate elopements to grand celebrations, we work closely with each couple
+              to understand their vision and bring it to life through our lens. Our goal is to
+              create a relaxed, enjoyable experience that results in stunning imagery you'll
               treasure forever.
             </p>
-            
+
             <div className="flex items-center space-x-2 text-warm-primary">
               <MapPin className="w-5 h-5" />
               <span className="font-medium">Based in Richmond, Virginia</span>
             </div>
-            
+
             <Button className="btn-warm mt-6">
               Learn More About Our Process
             </Button>
@@ -147,7 +148,7 @@ const AboutSection: React.FC = () => {
               Our Creative Team
             </h3>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Meet the talented individuals behind The Moment Maker Films, each bringing 
+              Meet the talented individuals behind The Moment Maker Films, each bringing
               their unique skills and passion to every project.
             </p>
           </div>
@@ -158,7 +159,7 @@ const AboutSection: React.FC = () => {
                 key={member.id}
                 className="group cursor-pointer overflow-hidden border-0 shadow-warm hover:shadow-warm-lg transition-all duration-500 hover-lift animate-fade-in-up"
                 style={{ animationDelay: `${index * 150}ms` }}
-                onClick={() => setSelectedMember(member)}
+                onClick={() => navigate(`/team-member/${member.id}`)}
               >
                 <div className="aspect-[3/4] overflow-hidden">
                   <img
@@ -187,77 +188,6 @@ const AboutSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Team Member Modal */}
-        {selectedMember && (
-          <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-6">
-            <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-scale-in">
-              <div className="relative">
-                <img
-                  src={selectedMember.image}
-                  alt={selectedMember.name}
-                  className="w-full h-64 object-cover"
-                />
-                <button
-                  onClick={() => setSelectedMember(null)}
-                  className="absolute top-4 right-4 p-2 bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors duration-300"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-              
-              <div className="p-8">
-                <h3 className="text-2xl font-serif font-medium text-foreground mb-2">
-                  {selectedMember.name}
-                </h3>
-                <p className="text-warm-primary font-medium mb-4">
-                  {selectedMember.role}
-                </p>
-                
-                <div className="space-y-6">
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-2">About</h4>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {selectedMember.bio}
-                    </p>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-2">Experience</h4>
-                    <p className="text-muted-foreground">
-                      {selectedMember.experience}
-                    </p>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-2">Specialties</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {selectedMember.specialties.map((specialty, index) => (
-                        <span
-                          key={index}
-                          className="px-3 py-1 bg-warm-light text-warm-primary text-sm rounded-full"
-                        >
-                          {specialty}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-2">Achievements</h4>
-                    <ul className="space-y-1">
-                      {selectedMember.achievements.map((achievement, index) => (
-                        <li key={index} className="text-muted-foreground text-sm flex items-center">
-                          <Award className="w-4 h-4 text-warm-primary mr-2" />
-                          {achievement}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );
