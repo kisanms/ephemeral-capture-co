@@ -13,6 +13,7 @@ import Investment from "./pages/Investment";
 import Blog from "./pages/Blog";
 import BookSession from "./pages/BookSession";
 import NotFound from "./pages/NotFound";
+import ComingSoon from "./pages/ComingSoon";
 
 const queryClient = new QueryClient();
 
@@ -38,11 +39,12 @@ const AppRoutes = () => {
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
+      {/* <Toaster />
       <Sonner />
       <BrowserRouter>
         <AppRoutes />
-      </BrowserRouter>
+      </BrowserRouter> */}
+      <ComingSoon />
     </TooltipProvider>
   </QueryClientProvider>
 );
