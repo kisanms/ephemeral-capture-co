@@ -10,7 +10,7 @@ const Investment = () => {
   const packages = [
     {
       name: 'Engagement Session',
-      price: '$650',
+      price: '₹650',
       duration: '2 hours',
       description: 'Perfect for couples wanting to celebrate their engagement',
       features: [
@@ -25,7 +25,7 @@ const Investment = () => {
     },
     {
       name: 'Wedding Photography',
-      price: '$2,850',
+      price: '₹2,850',
       duration: '8 hours',
       description: 'Complete wedding day coverage',
       features: [
@@ -42,7 +42,7 @@ const Investment = () => {
     },
     {
       name: 'Premium Wedding',
-      price: '$4,200',
+      price: '₹4,200',
       duration: '10 hours',
       description: 'Our most comprehensive wedding package',
       features: [
@@ -64,32 +64,32 @@ const Investment = () => {
   const addOns = [
     {
       name: 'Additional Hour',
-      price: '$350',
+      price: '₹350',
       description: 'Extend your photography coverage'
     },
     {
       name: 'Second Photographer',
-      price: '$750',
+      price: '₹750',
       description: 'Additional coverage angles'
     },
     {
       name: 'Engagement Session',
-      price: '$650',
+      price: '₹650',
       description: 'Pre-wedding photo session'
     },
     {
       name: 'Wedding Album',
-      price: '$850',
+      price: '₹850',
       description: 'Custom designed 50-page album'
     },
     {
       name: 'Rehearsal Dinner',
-      price: '$450',
+      price: '₹450',
       description: '3-hour rehearsal coverage'
     },
     {
       name: 'Photo Booth',
-      price: '$650',
+      price: '₹650',
       description: '4-hour photo booth rental'
     }
   ];
